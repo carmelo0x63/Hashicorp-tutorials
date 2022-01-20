@@ -1,0 +1,6 @@
+# Terraform
+.terraform*
+terraform.tfstate*
+
+# Local files that shouldn't be synchronized with the remote
+cloud_init.cfg

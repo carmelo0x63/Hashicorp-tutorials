@@ -10,9 +10,11 @@
 
 ----
 
+<pre>
 terraform init
 
 terraform apply
 
-ssh -oStrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" <user>@<ip_address>
+ssh -oStrictHostKeyChecking=no -o "UserKnownHostsFile=/dev/null" -i ~/.ssh/tf_keys cloud-user@@<ip_address>
+</pre>
 

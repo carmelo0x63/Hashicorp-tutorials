@@ -15,7 +15,7 @@ provider "libvirt" {
 # Defining VM Volume
 resource "libvirt_volume" "LibVirt-volume" {
   name   = var.vm_volume
-  pool   = "tf_images"                           # List storage pools using `virsh pool-list`
+  pool   = var.virsh_vol
 #  source = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
   source = "/var/lib/libvirt/images2/CentOS-7-x86_64-GenericCloud.qcow2"
   format = "qcow2"
@@ -29,18 +29,18 @@ data "template_file" "user_data" {
 # Use CloudInit to add the instance
 resource "libvirt_cloudinit_disk" "commoninit" {
   name      = "commoninit.iso"
-  pool      = "tf_images"                        # List storage pools using `virsh pool-list`
+  pool      = var.virsh_vol
   user_data = "${data.template_file.user_data.rendered}"
 }
 
 # Define KVM domain to create
 resource "libvirt_domain" "LibVirt-domain" {
   name   = var.vm_hostname
-  memory = "1024"
+  memory = 1024
   vcpu   = 1
 
   network_interface {
-    network_name   = "default"                   # List networks with `virsh net-list`
+    network_name   = var.virsh_net
     wait_for_lease = "true"
   }
 

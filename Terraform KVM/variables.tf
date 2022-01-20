@@ -8,6 +8,16 @@ variable "vm_volume" {
   default     = "cloud7.qcow2"
 }
 
+variable "virsh_vol" {
+  description = "Virsh volume"
+  default     = "tf_images"
+}
+
+variable "virsh_net" {
+  description = "Virsh network"
+  default     = "default"
+}
+
 variable "public_key" {
   default = "~/.ssh/tf_keys.pub"
 }
