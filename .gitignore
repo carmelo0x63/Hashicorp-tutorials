@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Terraform
+.terraform*
+terraform.tfstate*
+
+# Local files that shouldn't be synchronized with the remote
+*.local
+
